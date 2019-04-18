@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="day1 htmlhtml的操作思想： 网页中有很多数据，不同的数据可能需要不同的显示效果，这个时候需要使用标签把要操作的数据包起来（封装起来），通过修改标签的属性值实现标签内数据样式的变化。一个标签相当于一个容器，想要修改容器内数据的样式，只需要改变容器的属性值，就可以实现容器内数据样式的变化  html头标签">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端">
+<meta property="og:url" content="http://yoursite.com/2018/03/30/前端/index.html">
+<meta property="og:site_name" content="Zhuob&#39;s BLog">
+<meta property="og:description" content="day1 htmlhtml的操作思想： 网页中有很多数据，不同的数据可能需要不同的显示效果，这个时候需要使用标签把要操作的数据包起来（封装起来），通过修改标签的属性值实现标签内数据样式的变化。一个标签相当于一个容器，想要修改容器内数据的样式，只需要改变容器的属性值，就可以实现容器内数据样式的变化  html头标签">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-09T05:18:44.170Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端">
+<meta name="twitter:description" content="day1 htmlhtml的操作思想： 网页中有很多数据，不同的数据可能需要不同的显示效果，这个时候需要使用标签把要操作的数据包起来（封装起来），通过修改标签的属性值实现标签内数据样式的变化。一个标签相当于一个容器，想要修改容器内数据的样式，只需要改变容器的属性值，就可以实现容器内数据样式的变化  html头标签">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/30/前端/">
+
+
+
+
+
+  <title>前端 | Zhuob's BLog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhuob's BLog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/前端/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/刘看山.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhuob's BLog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-30T23:58:10+08:00">
+                2018-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaweb/" itemprop="url" rel="index">
+                    <span itemprop="name">javaweb</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaweb/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="day1-html"><a href="#day1-html" class="headerlink" title="day1 html"></a>day1 html</h2><h4 id="html的操作思想："><a href="#html的操作思想：" class="headerlink" title="html的操作思想："></a><strong>html的操作思想：</strong></h4><blockquote>
+<p>网页中有很多数据，不同的数据可能需要不同的显示效果，这个时候需要使用标签把要操作的数据包起来（封装起来），通过修改标签的属性值实现标签内数据样式的变化。一个标签相当于一个容器，想要修改容器内数据的样式，只需要改变容器的属性值，就可以实现容器内数据样式的变化</p>
+</blockquote>
+<h4 id="html头标签"><a href="#html头标签" class="headerlink" title="html头标签"></a>html头标签</h4><a id="more"></a>
+<ul>
+<li><p>head<br>在head里的标签就是头标签。</p>
+</li>
+<li><p>title ：在标签上显示的北荣</p>
+</li>
+<li>meta：设置页面的相关的内容</li>
+<li>base：设置超链接的基本设置</li>
+<li>link：引入外部文件</li>
+</ul>
+<h4 id="框架标签"><a href="#框架标签" class="headerlink" title="框架标签"></a>框架标签</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> &lt;frameset&gt;</span><br><span class="line">   - rows:  按行进行划分</span><br><span class="line">	    &lt;frameset rows=&quot;80,*&quot;&gt;</span><br><span class="line">   - cols:</span><br><span class="line">	    &lt;frameset cols=&quot;80,*&quot;&gt;</span><br><span class="line"> &lt;frame&gt;</span><br><span class="line">- 具体显示的页面</span><br><span class="line">&lt;frame name=&quot;lower_left&quot; src=&quot;b.html&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>使用框架标签的时候，不能写在body里面，使用框架标签，要把body去掉</p>
+<h2 id="day2-css"><a href="#day2-css" class="headerlink" title="day2 css"></a>day2 css</h2><h4 id="css的简介："><a href="#css的简介：" class="headerlink" title="css的简介："></a>css的简介：</h4><p>层叠样式表：</p>
+<ul>
+<li>层叠：一层一层的</li>
+<li>样式表：很多的属性和属性值</li>
+</ul>
+<p>使页面的效果更加好<br>css将页面内容和样式分开，提高了显示功能</p>
+<h4 id="css和html的结合方式（4种）"><a href="#css和html的结合方式（4种）" class="headerlink" title="css和html的结合方式（4种）"></a>css和html的结合方式（4种）</h4><ol>
+<li><p>在每个html标签上面都有一个属性 style，把css和html结合在一起。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style =&quot;background-color:red;color:green;&quot;&gt;xxx&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用html的一个标签实现<code>&lt;style&gt;</code>标签，写在head里面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">	&lt;!--css代码--&gt;</span><br><span class="line">	div&#123;</span><br><span class="line">		background-color:red;</span><br><span class="line">		color:green;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在style标签里面，使用语句</p>
+<pre><code>@ import url(css文件的路径)；
+- 第一步，穿件一个css文件
+</code></pre></li>
+<li><p>使用头标签 link，引入外部css文件</p>
+<pre><code>- 第一步，创建一个css文件
+- 第二步
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css文件路径&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>第三种结合方式，缺点：在某些浏览器下不起作用，一般使用第四种方式</p>
+</blockquote>
+<hr>
+<h4 id="css优先级"><a href="#css优先级" class="headerlink" title="css优先级"></a>css优先级</h4><blockquote>
+<p>（一般情况）<br>由上到下，由外到内，优先级有低到高。</p>
+</blockquote>
+<h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><p>格式： 选择器名称{ 属性名：属性}</p>
+<ol>
+<li><p>标签选择器</p>
+<blockquote>
+<p>使用标签名作为选择器的名称</p>
+</blockquote>
+</li>
+<li><p>class选择器</p>
+<blockquote>
+<p>每个html标签都有一个属性</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">标签名.class名&#123;&#125;</span><br><span class="line">.class名&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>3.id选择器</p>
+<blockquote>
+<p>每个html标签上面有一个属性id<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id = &quot;hehe&quot;&gt;xx&lt;/div&gt;</span><br><span class="line">div#hehe&#123;&#125;</span><br><span class="line">#hehe&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h4><blockquote>
+<p>class选择器 &gt; 标签选择器<br>id选择器&gt; class选择器<br>style&gt;id选择器</p>
+</blockquote>
+<h4 id="扩展选择器"><a href="#扩展选择器" class="headerlink" title="扩展选择器"></a>扩展选择器</h4><p>1.关联选择器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;p&gt;xxxxxx&lt;/p&gt;&lt;/div&gt;</span><br><span class="line">设置div标签里面p标签的样式，嵌套标签里面的样式。</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line"></span><br><span class="line">&lt;style&gt;....</span><br><span class="line">div p&#123;</span><br><span class="line">	#表示在div底下的p标签</span><br><span class="line">	标签与标签之间有空格</span><br><span class="line">&#125; </span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div&gt;&lt;p&gt;xxxxxx&lt;/p&gt;&lt;/div&gt;</span><br><span class="line">&lt;p&gt;xxxxxx&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<p>2.组合选择器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;www&lt;/div&gt;</span><br><span class="line">&lt;p&gt;2222&lt;/p&gt;</span><br><span class="line">把div和p标签设置成相同的标签，把不同的标签设置成相同的样式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line">&lt;style&gt;....</span><br><span class="line">div,p&#123;&#125;</span><br><span class="line"># 用英文逗号将两个标签分开</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div&gt;www&lt;/div&gt;</span><br><span class="line">&lt;p&gt;2222&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<p>3.伪元素选择器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">css里面提供了一些定义好的样式，可以拿过来直接使用</span><br><span class="line">比如超链接</span><br><span class="line">	超链接状态</span><br><span class="line">	1.原始状态 :link</span><br><span class="line">	2.悬停状态 :hower</span><br><span class="line">	3.点击状态 :active</span><br><span class="line">	4.点击之后 :visited</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">	a:link&#123;&#125;</span><br><span class="line">	a:howe&#123;&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;a href=&quot;xxxxxx&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="css的盒子模型"><a href="#css的盒子模型" class="headerlink" title="css的盒子模型"></a>css的盒子模型</h4><p>在进行布局前需要把数据封装到一块一块的区域内（div）</p>
+<ol>
+<li><p>边框<br>border：统一设置<br>上下左右<br>border-top<br>border-bottom<br>border-left<br>border-right<br>border:2px solid blue;</p>
+</li>
+<li><p>内边距<br>范围超出，会改变div大小<br>padding:统一设置<br>padding：20px；<br>padding-top:。。。。。</p>
+</li>
+<li>外边距<br>margin:统一设置<br>margin-top:分别设置</li>
+</ol>
+<h4 id="css的布局漂浮"><a href="#css的布局漂浮" class="headerlink" title="css的布局漂浮"></a>css的布局漂浮</h4><p>float<br>属性值：<br>left：文本流向对象的右边<br>right：文本流向对象的左边</p>
+<h4 id="css的布局的定位"><a href="#css的布局的定位" class="headerlink" title="css的布局的定位"></a>css的布局的定位</h4><p>position:<br>属性值：<br>    absolute:将对象从文档流中脱出，使用left等属性相对于其进行绝对定位<br>    relative:对象不可层叠，但将依据left等属性在正常文档中偏移位置</p>
+<h4 id="JavaScript简介："><a href="#JavaScript简介：" class="headerlink" title="JavaScript简介："></a>JavaScript简介：</h4><p>基于对象和事件驱动的语言，应用于客户端</p>
+<ol>
+<li>基于对象：提供好了很多对象，刻意直接拿过来使用</li>
+<li>事件驱动：html做网站静态效果，js动态效果</li>
+<li>客户端：专门☞浏览器</li>
+</ol>
+<h4 id="JavaScript的组成"><a href="#JavaScript的组成" class="headerlink" title="JavaScript的组成"></a>JavaScript的组成</h4><ol>
+<li>ECMAScript<br>ECMA:欧洲计算机协会<br>制定了js的语法，语句</li>
+<li>BOM<br>browser object model:浏览器对象模型</li>
+<li>DOM<br>document object model:文档对象模型</li>
+</ol>
+<h4 id="js和html的结合方式（两种）"><a href="#js和html的结合方式（两种）" class="headerlink" title="js和html的结合方式（两种）"></a>js和html的结合方式（两种）</h4><ol>
+<li>使用一个标签<br><code>&lt;script type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></li>
+<li>使用script标签引入一个外部的js文件<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;xxx.js&quot;&gt;&lt;/script&gt;</code><br>注意：不要在script标签里面写js代码了，不会执行</li>
+</ol>
+<h4 id="js的原始类型和声明变量"><a href="#js的原始类型和声明变量" class="headerlink" title="js的原始类型和声明变量"></a>js的原始类型和声明变量</h4><p>  java的基本数据类型： byte short int long float double boolean char<br>  js的原始类型（五个）：<br>  定义变量，都使用关键字var</p>
+<ul>
+<li>string  字符串<br>var  str =”abc”;</li>
+<li>number  数字类型<br>var m = 123;</li>
+<li>boolean  true和false<br>var flag =true;</li>
+<li>null<br>var date = new Date();<br>表示获取对象的引用，null表示对象引用为空，所有对象的引用也是object</li>
+<li>undifined<br>定义一个变量，没有赋值<br>var aa;</li>
+</ul>
+<p>typeof():查看当前数据类型</p>
+<h4 id="js语句"><a href="#js语句" class="headerlink" title="js语句"></a>js语句</h4><p>if判断语句<br>switch语句<br>for while do-while</p>
+<p>js不区分整数和小数</p>
+<p>alert(“456”-1); 输出455<br>alert(“abc”-1); 输出NaN<br>相减的时候，执行减法的运算<br>NaN:表示不是一个数字</p>
+<p><code>===和==</code>的区别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">==比较值</span><br><span class="line">===比较值和类型</span><br></pre></td></tr></table></figure>
+<p>引入知识：<br>直接向页面输出的语句（可以把内容写在页面上）<br>document.write(“aaa”)<br>可以向页面输出变量和html代码</p>
+<h4 id="js数组"><a href="#js数组" class="headerlink" title="js数组"></a>js数组</h4><ol>
+<li>var aaa={1,2,3};</li>
+<li>var arr=new Array(5);定义一个长度为5的数组<br>arr[0]=1;</li>
+<li>使用内置对象Array<br>var arr = new Array(3,4,5);定义一个数组，数组里面的元素是3,4,5</li>
+</ol>
+<p>数组里面有一个属性，length，获取数组长度<br>arr.length<br>数组可以存放不同的数据类型</p>
+<h4 id="js的函数（方法）"><a href="#js的函数（方法）" class="headerlink" title="js的函数（方法）"></a>js的函数（方法）</h4><p>在js里面定义函数有三种方式<br>函数的参数列表里面，不需要写var，直接写变量名</p>
+<ol>
+<li><p>使用到一个关键字：function</p>
+<p> function 方法名（参数列表）{<br> 方法体，<br> 返回值可有可无（根据实际需要）<br> }</p>
+</li>
+<li><p>匿名函数</p>
+<p> var add=function（参数列表）{方法体，返回值}</p>
+</li>
+<li><p>用的少，了解就行<br>使用到js里的一个内置对象 Function</p>
+</li>
+</ol>
+<pre><code>var add = new Function(参数列表，方法体和返回值)
+</code></pre><h4 id="js的全局变量和局部变量"><a href="#js的全局变量和局部变量" class="headerlink" title="js的全局变量和局部变量"></a>js的全局变量和局部变量</h4><p>全局变量：在script标签里面定义一个变量，这个变量在页面中js部分都可以使用<br>内部变量：在方法内部定义一个变量，只可以在方法内部调用</p>
+<h4 id="script标签放在什么位置"><a href="#script标签放在什么位置" class="headerlink" title="script标签放在什么位置"></a>script标签放在什么位置</h4><p>放在任何位置都可以<br>一般放在<code>&lt;/body&gt;</code>后面</p>
+<p>####js的重载</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/26/SymPy简介/" rel="next" title="SymPy简介">
+                <i class="fa fa-chevron-left"></i> SymPy简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/08/如何本地插入图片和改变音乐/" rel="prev" title="如何本地插入图片和改变音乐">
+                如何本地插入图片和改变音乐 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/刘看山.jpg" alt>
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ouyuo" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ni-shi-gou-ma-92" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-google"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+        </div>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="280" height="52" src="//music.163.com/outchain/player?type=2&id=502960453&auto=0&height=32"></iframe><!--网易云外链-->
+          
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#day1-html"><span class="nav-number">1.</span> <span class="nav-text">day1 html</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html的操作思想："><span class="nav-number">1.0.1.</span> <span class="nav-text">html的操作思想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html头标签"><span class="nav-number">1.0.2.</span> <span class="nav-text">html头标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#框架标签"><span class="nav-number">1.0.3.</span> <span class="nav-text">框架标签</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#day2-css"><span class="nav-number">2.</span> <span class="nav-text">day2 css</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#css的简介："><span class="nav-number">2.0.1.</span> <span class="nav-text">css的简介：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css和html的结合方式（4种）"><span class="nav-number">2.0.2.</span> <span class="nav-text">css和html的结合方式（4种）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css优先级"><span class="nav-number">2.0.3.</span> <span class="nav-text">css优先级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择器"><span class="nav-number">2.0.4.</span> <span class="nav-text">选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优先级"><span class="nav-number">2.0.5.</span> <span class="nav-text">优先级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展选择器"><span class="nav-number">2.0.6.</span> <span class="nav-text">扩展选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css的盒子模型"><span class="nav-number">2.0.7.</span> <span class="nav-text">css的盒子模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css的布局漂浮"><span class="nav-number">2.0.8.</span> <span class="nav-text">css的布局漂浮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css的布局的定位"><span class="nav-number">2.0.9.</span> <span class="nav-text">css的布局的定位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript简介："><span class="nav-number">2.0.10.</span> <span class="nav-text">JavaScript简介：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript的组成"><span class="nav-number">2.0.11.</span> <span class="nav-text">JavaScript的组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js和html的结合方式（两种）"><span class="nav-number">2.0.12.</span> <span class="nav-text">js和html的结合方式（两种）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js的原始类型和声明变量"><span class="nav-number">2.0.13.</span> <span class="nav-text">js的原始类型和声明变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js语句"><span class="nav-number">2.0.14.</span> <span class="nav-text">js语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js数组"><span class="nav-number">2.0.15.</span> <span class="nav-text">js数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js的函数（方法）"><span class="nav-number">2.0.16.</span> <span class="nav-text">js的函数（方法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js的全局变量和局部变量"><span class="nav-number">2.0.17.</span> <span class="nav-text">js的全局变量和局部变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#script标签放在什么位置"><span class="nav-number">2.0.18.</span> <span class="nav-text">script标签放在什么位置</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+
+  
+</div>
+
+
+
+
+  <span class="post-meta-divider">人面不知何处去，挑花依旧笑春风。</span>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

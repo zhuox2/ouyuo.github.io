@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介 什么是计算符号（Symbolic Computation)符号计算就是以象征性的方法处理数学对象的计算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SymPy简介">
+<meta property="og:url" content="http://yoursite.com/2018/03/26/SymPy简介/index.html">
+<meta property="og:site_name" content="Zhuob&#39;s BLog">
+<meta property="og:description" content="简介 什么是计算符号（Symbolic Computation)符号计算就是以象征性的方法处理数学对象的计算">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-03-27T01:19:34.487Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SymPy简介">
+<meta name="twitter:description" content="简介 什么是计算符号（Symbolic Computation)符号计算就是以象征性的方法处理数学对象的计算">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/26/SymPy简介/">
+
+
+
+
+
+  <title>SymPy简介 | Zhuob's BLog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhuob's BLog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/SymPy简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/刘看山.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhuob's BLog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SymPy简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-26T23:18:11+08:00">
+                2018-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/科学计算/" itemprop="url" rel="index">
+                    <span itemprop="name">科学计算</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/科学计算/SymPy/" itemprop="url" rel="index">
+                    <span itemprop="name">SymPy</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><hr>
+<h3 id="什么是计算符号（Symbolic-Computation"><a href="#什么是计算符号（Symbolic-Computation" class="headerlink" title="什么是计算符号（Symbolic Computation)"></a>什么是计算符号（Symbolic Computation)</h3><p>符号计算就是以象征性的方法处理数学对象的计算</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import math</span><br><span class="line">&gt;&gt;&gt; math.sqrt(9)</span><br><span class="line">3.0</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; math.sqrt(8)</span><br><span class="line">2.82842712475</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; sympy.sqrt(8)</span><br><span class="line">2*sqrt(2)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>意思就是python包里面的math方法，开更号的话就是一个有限小数，不准确，只是大概。但是sympy的话结果是 <code>2*sqrt（2）</code> 是一种指代，象征就这个意思。他可以准确 代表8的开更号。</p>
+</blockquote>
+<hr>
+<h3 id="一个更有趣的示例"><a href="#一个更有趣的示例" class="headerlink" title="一个更有趣的示例"></a>一个更有趣的示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在 SymPy 现场运行代码块</span><br><span class="line">&gt;&gt;&gt; from sympy import symbols</span><br><span class="line">&gt;&gt;&gt; x, y = symbols(&apos;x y&apos;)</span><br><span class="line">&gt;&gt;&gt; expr = x + 2*y</span><br><span class="line">&gt;&gt;&gt; expr</span><br><span class="line">x + 2*y</span><br></pre></td></tr></table></figure>
+<p>表达式保持不变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x*expr</span><br><span class="line">x*(x + 2*y)</span><br></pre></td></tr></table></figure>
+<p>他没有变为x^2+2xy，而是保持不变。</p>
+<hr>
+<h3 id="计算威力"><a href="#计算威力" class="headerlink" title="计算威力"></a>计算威力</h3><p>符号计算系统 (如 SymPy) 的真正威力是象征性地进行各种计算的能力。SymPy 可以简化表达式, 计算导数, 积分和极限, 求解方程, 使用矩阵, 多, 更多, 并以象征性的方式进行。它包括用于绘图、打印的模块 (如2D 漂亮的数学公式打印输出, 或代码生成, 物理, 统计, 组合, 数字理论, 几何, 逻辑等。</p>
+<h2 id="gotches-陷阱？"><a href="#gotches-陷阱？" class="headerlink" title="gotches(陷阱？)"></a>gotches(陷阱？)</h2><h3 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h3><p>变量定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sympy import *</span><br><span class="line">x=symbols(&apos;x&apos;)</span><br><span class="line">a,b=symbols(&apos;a b&apos;)  #用空格隔开</span><br><span class="line">expr=x+1</span><br><span class="line">x=2</span><br><span class="line">print(expr)</span><br><span class="line"></span><br><span class="line">#输出 :x+1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> symbols定义好之后，之后对变量的改变不会改变表达式</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x = &apos;abc&apos;</span><br><span class="line">&gt;&gt;&gt; expr = x + &apos;def&apos;</span><br><span class="line">&gt;&gt;&gt; expr</span><br><span class="line">&apos;abcdef&apos;</span><br><span class="line">&gt;&gt;&gt; x = &apos;ABC&apos;</span><br><span class="line">&gt;&gt;&gt; expr</span><br><span class="line">&apos;abcdef&apos;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>若要改变表达式中更改符号的值，使用subs</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;&gt;&gt; x = symbols(&apos;x&apos;)</span><br><span class="line">&gt;&gt;&gt; expr = x + 1</span><br><span class="line">&gt;&gt;&gt; expr.subs(x, 2)</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h3 id="等于符号"><a href="#等于符号" class="headerlink" title="等于符号"></a>等于符号</h3><p>python语言里==表示判断两个值是否相等。sympy没有改变它。所以sympy写一个等式用Eq</p>
+<blockquote>
+<p>这种比较，只有在结构上完全相等时，两个表达式才会比较。<br>如果比较（x+1)^2 和x^2+2x+1就不行<br>我觉得这个主要用在设置方程式</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; Eq(x + 1, 4)</span><br><span class="line">Eq(x + 1, 4)</span><br><span class="line"></span><br><span class="line">print(Eq(x+1,2).subs(x,1))</span><br><span class="line">print(Eq(x+1,2).subs(x,2))</span><br></pre></td></tr></table></figure>
+<h4 id="simplify"><a href="#simplify" class="headerlink" title="simplify"></a>simplify</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = (x + 1)**2</span><br><span class="line">&gt;&gt;&gt; b = x**2 + 2*x + 1</span><br><span class="line">&gt;&gt;&gt; simplify(a - b)</span><br><span class="line">0</span><br><span class="line">&gt;&gt;&gt; c = x**2 - 2*x + 1</span><br><span class="line">&gt;&gt;&gt; simplify(a - c)</span><br><span class="line">4*x</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;&gt;&gt; a = cos(x)**2 - sin(x)**2</span><br><span class="line">&gt;&gt;&gt; b = cos(2*x)</span><br><span class="line">&gt;&gt;&gt; a.equals(b)</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<h3 id="最后两个注释：-和"><a href="#最后两个注释：-和" class="headerlink" title="最后两个注释：^ 和 /"></a>最后两个注释：^ 和 /</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;&gt;&gt; True ^ False</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; True ^ True</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; x^y</span><br><span class="line">Xor(x, y)</span><br><span class="line">#xor的英文意思是异或</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; type(Integer(1) + 1)</span><br><span class="line">&lt;class &apos;sympy.core.numbers.Integer&apos;&gt;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; Integer(1)/Integer(3)</span><br><span class="line">1/3</span><br><span class="line">&gt;&gt;&gt; type(Integer(1)/Integer(3))</span><br><span class="line">&lt;class &apos;sympy.core.numbers.Rational&apos;&gt;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; Rational(1, 2)</span><br><span class="line">1/2</span><br><span class="line"># 构造有理数</span><br></pre></td></tr></table></figure>
+<p>当组合python和sympy对象时，会得到一个sympy对象</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h3><p>将表达式里所有实例替换成其他内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; expr = cos(x) + 1</span><br><span class="line">&gt;&gt;&gt; expr.subs(x, y)</span><br><span class="line">cos(y) + 1</span><br></pre></td></tr></table></figure>
+<p>替换有两个原因：</p>
+<ul>
+<li>一个是想得到他的值，把未知数替换</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; expr.subs(x, 0)</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将子表达式替换为另一个子表达式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; expr = x**y</span><br><span class="line">&gt;&gt;&gt; expr</span><br><span class="line">x**y</span><br><span class="line">&gt;&gt;&gt; expr = expr.subs(y, x**y)</span><br><span class="line">&gt;&gt;&gt; expr</span><br><span class="line">x**(x**y)</span><br><span class="line">&gt;&gt;&gt; expr = expr.subs(y, x**x)</span><br><span class="line">&gt;&gt;&gt; expr</span><br><span class="line">x**(x**(x**x))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第二个是, 如果我们想要执行一个非常控制的简化</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; expr = sin(2*x) + cos(2*x)</span><br><span class="line">&gt;&gt;&gt; expand_trig(expr)</span><br><span class="line">2*sin(x)*cos(x) + 2*cos(x)**2 - 1</span><br><span class="line">&gt;&gt;&gt; expr.subs(sin(2*x), 2*sin(x)*cos(x))</span><br><span class="line">2*sin(x)*cos(x) + cos(2*x)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>他返回一个新的表达式，sympy对象时不可变的。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; expr = cos(x)</span><br><span class="line">&gt;&gt;&gt; expr.subs(x, 0)</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; expr</span><br><span class="line">cos(x)</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>若要一次执行多个替换，将列表穿个他。subs(old,new )</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; expr = x**3 + 4*x*y - z</span><br><span class="line">&gt;&gt;&gt; expr.subs([(x, 2), (y, 4), (z, 0)])</span><br><span class="line">40</span><br></pre></td></tr></table></figure>
+<p>通过判断语句把指数为双数的未知数换成y</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; expr = x**4 - 4*x**3 + 4*x**2 - 2*x + 3</span><br><span class="line">&gt;&gt;&gt; replacements = [(x**i, y**i) for i in range(5) if i % 2 == 0]</span><br><span class="line">&gt;&gt;&gt; expr.subs(replacements)</span><br><span class="line">-4*x**3 - 2*x + y**4 + 4*y**2 + 3</span><br></pre></td></tr></table></figure>
+<h3 id="将字符串转为sympy表达式"><a href="#将字符串转为sympy表达式" class="headerlink" title="将字符串转为sympy表达式"></a>将字符串转为sympy表达式</h3><ul>
+<li>用simplfy</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; str_expr = &quot;x**2 + 3*x - 1/2&quot;</span><br><span class="line">&gt;&gt;&gt; expr = sympify(str_expr)</span><br><span class="line">&gt;&gt;&gt; expr</span><br><span class="line">x**2 + 3*x - 1/2</span><br><span class="line">&gt;&gt;&gt; expr.subs(x, 2)</span><br><span class="line">19/2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将数值表达式计算为浮点数字，用evalf</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;&gt;&gt; expr = sqrt(8)</span><br><span class="line">&gt;&gt;&gt; expr.evalf()</span><br><span class="line">2.82842712474619</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;&gt;&gt; pi.evalf(100)</span><br><span class="line">3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117068</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; expr = cos(2*x)</span><br><span class="line">&gt;&gt;&gt; expr.evalf(subs=&#123;x: 2.4&#125;)</span><br><span class="line">0.0874989834394464</span><br></pre></td></tr></table></figure>
+<p>有时, 在计算表达式后, 舍入错误会小于所需的精度。通过将标志设置为 True, 可以在用户的酌情权下删除此类数字。chop</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; one = cos(1)**2 + sin(1)**2</span><br><span class="line">&gt;&gt;&gt; (one - 1).evalf()</span><br><span class="line">-0.e-124</span><br><span class="line">&gt;&gt;&gt; (one - 1).evalf(chop=True)</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h3 id="lambdify"><a href="#lambdify" class="headerlink" title="lambdify"></a>lambdify</h3><p>如果过在大量的简单的地方做运算，numpy，math等速度比sympy快。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#使用numpy</span><br><span class="line">&gt;&gt;&gt; import numpy </span><br><span class="line">&gt;&gt;&gt; a = numpy.arange(10) </span><br><span class="line">&gt;&gt;&gt; expr = sin(x)</span><br><span class="line">&gt;&gt;&gt; f = lambdify(x, expr, &quot;numpy&quot;) </span><br><span class="line">&gt;&gt;&gt; f(a) </span><br><span class="line">[ 0.          0.84147098  0.90929743  0.14112001 -0.7568025  -0.95892427</span><br><span class="line"> -0.2794155   0.6569866   0.98935825  0.41211849]</span><br><span class="line"></span><br><span class="line">#使用math</span><br><span class="line">&gt;&gt;&gt; f = lambdify(x, expr, &quot;math&quot;)</span><br><span class="line">&gt;&gt;&gt; f(0.1)</span><br><span class="line">0.0998334166468</span><br><span class="line"></span><br><span class="line">#使用自定义函数</span><br><span class="line">&gt;&gt;&gt; def mysin(x):</span><br><span class="line">...     &quot;&quot;&quot;</span><br><span class="line">...     My sine. Note that this is only accurate for small x.</span><br><span class="line">...     &quot;&quot;&quot;</span><br><span class="line">...     return x</span><br><span class="line">&gt;&gt;&gt; f = lambdify(x, expr, &#123;&quot;sin&quot;:mysin&#125;)</span><br><span class="line">&gt;&gt;&gt; f(0.1)</span><br><span class="line">0.1</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/26/Xpath匹配途牛机票/" rel="next" title="Xpath匹配途牛机票">
+                <i class="fa fa-chevron-left"></i> Xpath匹配途牛机票
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/30/前端/" rel="prev" title="前端">
+                前端 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/刘看山.jpg" alt>
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ouyuo" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ni-shi-gou-ma-92" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-google"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+        </div>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="280" height="52" src="//music.163.com/outchain/player?type=2&id=502960453&auto=0&height=32"></iframe><!--网易云外链-->
+          
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是计算符号（Symbolic-Computation"><span class="nav-number">1.1.</span> <span class="nav-text">什么是计算符号（Symbolic Computation)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个更有趣的示例"><span class="nav-number">1.2.</span> <span class="nav-text">一个更有趣的示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算威力"><span class="nav-number">1.3.</span> <span class="nav-text">计算威力</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gotches-陷阱？"><span class="nav-number">2.</span> <span class="nav-text">gotches(陷阱？)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#符号"><span class="nav-number">2.1.</span> <span class="nav-text">符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#等于符号"><span class="nav-number">2.2.</span> <span class="nav-text">等于符号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#simplify"><span class="nav-number">2.2.1.</span> <span class="nav-text">simplify</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后两个注释：-和"><span class="nav-number">2.3.</span> <span class="nav-text">最后两个注释：^ 和 /</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">3.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#替换"><span class="nav-number">3.1.</span> <span class="nav-text">替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将字符串转为sympy表达式"><span class="nav-number">3.2.</span> <span class="nav-text">将字符串转为sympy表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lambdify"><span class="nav-number">3.3.</span> <span class="nav-text">lambdify</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+
+  
+</div>
+
+
+
+
+  <span class="post-meta-divider">人面不知何处去，挑花依旧笑春风。</span>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
